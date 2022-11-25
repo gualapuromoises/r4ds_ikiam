@@ -1,0 +1,31 @@
+---
+title: "Authoring A Book with R Markdown"
+author: "Yihui Xie"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+output:
+  bookdown::gitbook:
+    lib_dir: "book_assets"
+  bookdown::pdf_book:
+    keep_tex: yes
+documentclass: book
+
+biblio-style: apalike
+link-citations: yes
+rmd_files: ["index.qmd", "abstract.qmd", "intro.qmd"]
+---
+
+# Preface {-}
+
+In this book, we will introduce an interesting
+method.
+
+# Introduction
+
+This chapter is an overview of the methods that
+we propose to solve an **important problem**.
+
+```{r}
+
+```
+
