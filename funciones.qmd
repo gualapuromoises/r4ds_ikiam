@@ -1,0 +1,32 @@
+---
+title: "Funciones en R"
+author: "Moisés Gualapuro"
+format: html
+editor: visual
+---
+
+## 
+
+# Funciones
+
+## Introducción
+
+Una de las mejores maneras de lograr tener mayor alcance haciendo ciencia de datos es escribir funciones. Las **funciones te permitirán automatizar** algunas tareas comunes de una forma más poderosa y general que copiar-y-pegar. Escribir funciones tiene tres grandes ventajas sobre copiar-y-pegar:
+
+1.  Puedes dar a la función un **nombre evocador** que hará tu código más fácil de entender.
+
+2.  A medida que cambien los requerimientos, solo necesitarás cambiar tu código en un solo lugar, en vez de en varios lugares.
+
+3.  Eliminas las probabilidades de errores accidentales cuando copias y pegas (por ej., al actualizar el nombre de una variable en un lugar, pero no en otro).
+
+Escribir funciones es un viaje de toda una vida. Incluso después de usar R por varios años, seguimos aprendiendo nuevas técnicas y mejores formas de abordar viejos problemas. El objetivo de este capítulo no es enseñarte cada detalle esotérico de las funciones, sino introducirte en este tema con consejos pragmáticos que puedas aplicar inmediatamente.
+
+Además de consejos prácticos para escribir funciones, este capítulo también te entregará consejos de estilo para tu código. Escribir código con buen estilo es como utilizar la puntuación correcta. Puedesmanejartesinella, pero utilizarla hace las cosas más fáciles de leer. Al igual que con los estilos de puntuación, hay muchas posibles variaciones. Si bien aquí presentamos el estilo que nosotros usamos en nuestro código, lo más importante es que seas consistente.
+
+### 19.1.1 Prerrequisitos
+
+El foco de este capítulo es escribir funciones en R base, por lo que no necesitarás ningún paquete extra.
+
+## 19.2 ¿Cuándo deberías escribir una función?
+
+Deberías considerar escribir una función cuando has copiado y pegado un bloque de código más de dos veces (es decir, ahora tienes tres copias del mismo). Mira, por ejemplo, el siguiente código. ¿Qué es lo que hace?

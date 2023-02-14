@@ -12,20 +12,83 @@ documentclass: book
 
 biblio-style: apalike
 link-citations: yes
-rmd_files: ["index.qmd", "abstract.qmd", "intro.qmd"]
+rmd_files: 
+  html:["index.qmd", "abstract.qmd", "intro.qmd"]
 ---
+
 
 # Preface {-}
 
-In this book, we will introduce an interesting
-method.
+```{r child = here::here("script", "index.qmd"), eval = FALSE}
+```
 
-# Introduction
+# Intro {-}
 
-This chapter is an overview of the methods that
-we propose to solve an **important problem**.
+```{r child = here::here("script", "intro.qmd"), eval = FALSE}
+```
 
 ```{r}
+Birds=c(30, 29, 35, 32, 28, 31, 39, 20, 25, 31, 31, 18, 21, 21)
+System=c("o", "o", "o", "o", "o", "o","o","c", "c", "c", "c", "c", "c","c")
+df = data.frame(System, Birds)
+glm1 <-glm(Birds~System, family=poisson, data=df)
+summary(glm1)
+
 
 ```
+
+```{r}
+predict(glm1, type="response", se.fit=T)
+
+par(mfrow=c(1,1))
+plot(Birds~as.factor(System), xlab="System", ylab="Number of birds")
+points(c(1,2),c(23.65, 32), pch=19, cex=1.5, col="red")
+lines(c(1,1),c(23.65-1.96*1.85, 23.65+1.96*1.85), col="red")
+lines(c(2,2),c(32-1.96*2.14, 32+1.96*2.14), col="red")
+```
+
+
+
+
+```{r}
+X = c(45, 50, 55, 60, 65)
+Y = c(51, 35, 12, 0, 0)
+glm2 <- glm(Y~X, family=poisson)
+summary(glm2)
+plot(X,Y, xlab="Temperature (C)",ylab="Number of insects")
+lines(45:65,exp(coef(glm2)[1]+coef(glm2)[2]*45:65), col="red")
+```
+
+# COVID
+
+```{r}
+city_size = c(1100, 5602, 100551, 99090, 32218, 2401, 7123,66612)
+temperature = c(14, 8, 19, 18, 11, 10, 9, 21)
+cases = c(0, 11, 2018, 990, 671, 65, 22, 2387)
+covid_df = data.frame(temperature, cases, city_size)
+par(mfrow=c(1,2))
+plot(temperature,cases, pch=19)
+plot(temperature,cases/city_size, pch=19)
+```
+
+
+```{r}
+covid_glm1=glm(cases~temperature, family=poisson)
+summary(covid_glm1)
+
+covid_glm2=glm(cases~temperature+ offset(log(city_size)), family=poisson)
+summary(covid_glm2)
+
+covid_glm3=glm(cases~temperature, family=quasipoisson)
+summary(covid_glm3)
+
+covid_glm4=glm(cases~temperature+offset(log(city_size)), family=quasipoisson)
+summary(covid_glm4)
+```
+
+```{r}
+AIC(covid_glm1, covid_glm2, covid_glm3, covid_glm4)
+```
+
+
 
